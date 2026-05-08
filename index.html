@@ -2,58 +2,90 @@
 <html>
 <head>
     <title>PsyEdge</title>
+
     <style>
         body {
             margin: 0;
             font-family: Segoe UI, Arial;
-            background: linear-gradient(135deg, #0d1117, #111827);
+            background: linear-gradient(120deg, #0d1117, #111827);
             color: white;
-            text-align: center;
         }
 
         .container {
-            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            padding: 0 80px;
+        }
+
+        .left {
+            max-width: 520px;
         }
 
         h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 52px;
+            margin-bottom: 20px;
         }
 
         p {
             font-size: 18px;
             color: #c9d1d9;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .btn {
             display: inline-block;
-            margin: 10px;
-            padding: 14px 24px;
-            background: #0070ba;
+            padding: 14px 28px;
+            background: linear-gradient(90deg, #7c3aed, #9333ea);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
+            margin-right: 15px;
             transition: 0.2s;
         }
 
         .btn:hover {
-            background: #005a96;
             transform: scale(1.05);
+        }
+
+        .link {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
 
 <div class="container">
-    <h1>PsyEdge</h1>
-    <p>Train Your Mind, Build Discipline, Grow Consistently</p>
 
-    <a class="btn" href="https://github.com/PsyEdgeCore/PsyEdge-App">Download App</a>
-    <a class="btn" href="https://t.me/PsyEdgeCore">Telegram</a>
-    <a class="btn" href="https://x.com/PsyEdgeCore">X</a>
-    <a class="btn" href="https://www.youtube.com/@PsyEdgeCore">YouTube</a>
+    <div class="left">
+        <h1>Train your mind.<br>Sharpen your edge.</h1>
+
+        <p>
+            A focused app to build discipline, improve mindset,
+            and grow with consistency.
+        </p>
+
+        <a class="btn" href="https://github.com/PsyEdgeCore/PsyEdge-App">
+            Download PsyEdge (Windows)
+        </a>
+
+        <a class="link" href="https://github.com/PsyEdgeCore">
+            View on GitHub →
+        </a>
+    </div>
+
+    <!-- Right side (empty for now, image later) -->
+    <div></div>
+
 </div>
 
 </body>
