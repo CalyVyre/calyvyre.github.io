@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PsyEdge</title>
+    <title>CalyVyre</title>
 
     <style>
         body {
@@ -9,6 +9,7 @@
             font-family: Segoe UI, Arial;
             background: linear-gradient(120deg, #0d1117, #111827);
             color: white;
+            overflow: hidden;
         }
 
         .container {
@@ -16,34 +17,45 @@
             align-items: center;
             justify-content: space-between;
             height: 100vh;
-            padding: 0 80px;
+            padding: 0 90px;
         }
 
         .left {
-            max-width: 520px;
+            max-width: 560px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #a78bfa;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
         h1 {
-            font-size: 52px;
-            margin-bottom: 20px;
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 22px;
         }
 
         p {
-            font-size: 18px;
+            font-size: 19px;
             color: #c9d1d9;
-            margin-bottom: 30px;
+            line-height: 1.7;
+            margin-bottom: 35px;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 28px;
+            padding: 15px 30px;
             background: linear-gradient(90deg, #7c3aed, #9333ea);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: bold;
-            margin-right: 15px;
+            margin-right: 18px;
             transition: 0.2s;
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.25);
         }
 
         .btn:hover {
@@ -53,11 +65,22 @@
         .link {
             color: #a78bfa;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 17px;
         }
 
         .link:hover {
             text-decoration: underline;
+        }
+
+        .right {
+            width: 420px;
+            height: 420px;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at top, rgba(124,58,237,0.25), transparent 60%),
+                rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
@@ -67,24 +90,32 @@
 <div class="container">
 
     <div class="left">
-        <h1>Train your mind.<br>Sharpen your edge.</h1>
+
+        <div class="logo">CalyVyre</div>
+
+        <h1>
+            Rewire your mind.<br>
+            Build calm discipline.
+        </h1>
 
         <p>
-            A focused app to build discipline, improve mindset,
-            and grow with consistency.
+            CalyVyre helps you train focus, improve mindset,
+            and build consistency through mental awareness
+            and disciplined thinking.
         </p>
 
-        <a class="btn" href="https://github.com/PsyEdgeCore/PsyEdge-App">
-            Download PsyEdge (Windows)
+        <a class="btn" href="https://github.com/CalyVyre/CalyVyre-App">
+            Download for Windows
         </a>
 
-        <a class="link" href="https://github.com/PsyEdgeCore">
+        <a class="link" href="https://github.com/CalyVyre">
             View on GitHub →
         </a>
+
     </div>
 
-    <!-- Right side (empty for now, image later) -->
-    <div></div>
+    <!-- Right Side -->
+    <div class="right"></div>
 
 </div>
 
