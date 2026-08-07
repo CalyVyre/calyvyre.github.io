@@ -156,6 +156,7 @@
         text-decoration: none;
         font-size: 15px;
         transition: 0.2s;
+        cursor: pointer;
     }
     .connect-item:hover {
         border-color: rgba(167, 139, 250, 0.5);
@@ -172,6 +173,68 @@
     .connect-item.support:hover {
         border-color: rgba(250, 204, 21, 0.6);
         color: #fef3c7;
+    }
+
+    /* Contact dropdown */
+    .contact-wrap {
+        position: relative;
+        display: inline-block;
+    }
+    .contact-menu {
+        display: none;
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #161b22;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 8px;
+        min-width: 200px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        z-index: 10;
+    }
+    .contact-menu.open {
+        display: block;
+    }
+    .contact-menu a,
+    .contact-menu button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        background: none;
+        border: none;
+        color: #c9d1d9;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: inherit;
+        padding: 10px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .contact-menu a:hover,
+    .contact-menu button:hover {
+        background: rgba(167, 139, 250, 0.12);
+        color: #e5e7eb;
+    }
+    .copy-toast {
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #7c3aed;
+        color: white;
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+    }
+    .copy-toast.show {
+        opacity: 1;
     }
 </style>
 </head>
@@ -247,13 +310,43 @@
         <a class="connect-item" href="https://t.me/CalyVyre" target="_blank">
             <span class="icon">✈️</span> Telegram
         </a>
-        <a class="connect-item" href="mailto:calyvyre@gmail.com?subject=CalyVyre%20Inquiry">
-            <span class="icon">✉️</span> Contact
-        </a>
+
+        <div class="contact-wrap">
+            <div class="connect-item" onclick="toggleContactMenu(event)">
+                <span class="icon">✉️</span> Contact
+            </div>
+            <div class="contact-menu" id="contactMenu">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=calyvyre@gmail.com&su=CalyVyre%20Inquiry" target="_blank">📧 Open in Gmail</a>
+                <a href="https://outlook.live.com/mail/0/deeplink/compose?to=calyvyre@gmail.com&subject=CalyVyre%20Inquiry" target="_blank">📨 Open in Outlook</a>
+                <a href="mailto:calyvyre@gmail.com?subject=CalyVyre%20Inquiry">💻 Open default mail app</a>
+                <button onclick="copyEmail(event, this)">📋 Copy email address</button>
+            </div>
+            <div class="copy-toast" id="copyToast">Copied!</div>
+        </div>
+
         <a class="connect-item support" href="support.html">
             <span class="icon">💛</span> Support
         </a>
     </div>
 </div>
+
+<script>
+    function toggleContactMenu(e) {
+        e.stopPropagation();
+        document.getElementById('contactMenu').classList.toggle('open');
+    }
+    document.addEventListener('click', function () {
+        document.getElementById('contactMenu').classList.remove('open');
+    });
+    function copyEmail(e, btn) {
+        e.stopPropagation();
+        navigator.clipboard.writeText('calyvyre@gmail.com').then(function () {
+            var toast = document.getElementById('copyToast');
+            toast.classList.add('show');
+            setTimeout(function () { toast.classList.remove('show'); }, 1500);
+            document.getElementById('contactMenu').classList.remove('open');
+        });
+    }
+</script>
 </body>
 </html>
