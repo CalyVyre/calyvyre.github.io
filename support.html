@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support CalyVyre</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Segoe UI, Arial;
+        background: linear-gradient(120deg, #0d1117, #111827);
+        color: white;
+        min-height: 100vh;
+    }
+    .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 90px 40px 120px;
+    }
+    .back {
+        display: inline-block;
+        color: #a78bfa;
+        text-decoration: none;
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+    .back:hover {
+        text-decoration: underline;
+    }
+    h1 {
+        font-size: 40px;
+        margin: 0 0 12px;
+        background: linear-gradient(90deg, #fde68a, #fbbf24);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .intro {
+        font-size: 17px;
+        color: #c9d1d9;
+        line-height: 1.7;
+        margin-bottom: 50px;
+        max-width: 620px;
+    }
+    .method {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 28px 30px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+    }
+    .method-info {
+        flex: 1;
+        min-width: 240px;
+    }
+    .method h2 {
+        font-size: 20px;
+        margin: 0 0 10px;
+        color: #e5e7eb;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .method a.paylink {
+        color: #a78bfa;
+        text-decoration: none;
+        font-size: 15px;
+    }
+    .method a.paylink:hover {
+        text-decoration: underline;
+    }
+    .address {
+        font-family: Consolas, monospace;
+        font-size: 13.5px;
+        color: #c9d1d9;
+        background: rgba(0,0,0,0.3);
+        padding: 10px 14px;
+        border-radius: 8px;
+        word-break: break-all;
+        margin-top: 4px;
+        display: inline-block;
+    }
+    .method img.qr {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        background: white;
+        padding: 6px;
+        flex-shrink: 0;
+    }
+    .note {
+        font-size: 13px;
+        color: #8b949e;
+        margin-top: 6px;
+    }
+    .contact-line {
+        margin-top: 50px;
+        font-size: 16px;
+        color: #c9d1d9;
+    }
+    .contact-line a {
+        color: #a78bfa;
+        text-decoration: none;
+    }
+    .contact-line a:hover {
+        text-decoration: underline;
+    }
+    .thanks {
+        margin-top: 40px;
+        font-size: 16px;
+        color: #fde68a;
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back" href="index.html">← Back to CalyVyre</a>
+    <h1>💛 Support CalyVyre</h1>
+    <p class="intro">
+        If you find this project useful and want to support its development,
+        you can contribute using any of the methods below.
+    </p>
+
+    <div class="method">
+        <div class="method-info">
+            <h2>💳 PayPal</h2>
+            <a class="paylink" href="https://paypal.com/paypalme/mohdraza13" target="_blank">
+                paypal.com/paypalme/mohdraza13
+            </a>
+        </div>
+        <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fpaypal.com%2Fpaypalme%2Fmohdraza13" alt="PayPal QR code">
+    </div>
+
+    <div class="method">
+        <div class="method-info">
+            <h2>₿ Bitcoin (BTC)</h2>
+            <span class="address">bc1qmwsuqa28za64vwzfzrj4850eupfwet42mkvhn7</span>
+        </div>
+        <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin%3Abc1qmwsuqa28za64vwzfzrj4850eupfwet42mkvhn7" alt="Bitcoin QR code">
+    </div>
+
+    <div class="method">
+        <div class="method-info">
+            <h2>💰 USDT (TRC20)</h2>
+            <span class="address">TBj32hKLRv9tBhwjCvu5Hx6zENUBmzqMR9</span>
+            <div class="note">TRC20 network only</div>
+        </div>
+        <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TBj32hKLRv9tBhwjCvu5Hx6zENUBmzqMR9" alt="USDT TRC20 QR code">
+    </div>
+
+    <div class="method">
+        <div class="method-info">
+            <h2>🏦 UPI (India only)</h2>
+            <span class="address">mohdraza13-1@oksbi</span>
+        </div>
+        <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi%3A%2F%2Fpay%3Fpa%3Dmohdraza13-1%40oksbi%26pn%3DCalyVyre" alt="UPI QR code">
+    </div>
+
+    <p class="contact-line">
+        📩 If you contribute, feel free to reach out:
+        <a href="mailto:calyvyre@gmail.com?subject=CalyVyre%20Support">calyvyre@gmail.com</a>
+    </p>
+
+    <p class="thanks">
+        🙏 Thank you for supporting CalyVyre.<br>
+        Your support helps build discipline, mindset, and consistent growth.
+    </p>
+</div>
+</body>
+</html>
