@@ -91,6 +91,15 @@
             rgba(255,255,255,0.03);
         border: 1px solid rgba(255,255,255,0.06);
         backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .right img {
+        max-width: 65%;
+        max-height: 65%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 35px rgba(124, 58, 237, 0.35));
     }
     .affirm-section {
         max-width: 780px;
@@ -192,7 +201,9 @@
         </a>
     </div>
     <!-- Right Side -->
-    <div class="right"></div>
+    <div class="right">
+        <img src="images/logotrans.png" alt="CalyVyre Logo">
+    </div>
 </div>
 
 <div class="affirm-section">
