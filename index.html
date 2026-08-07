@@ -88,6 +88,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
     .right img {
         max-width: 100%;
@@ -235,6 +236,62 @@
     }
     .copy-toast.show {
         opacity: 1;
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            justify-content: center;
+            height: auto;
+            min-height: 100vh;
+            padding: 60px 24px 50px;
+            text-align: left;
+        }
+        .left {
+            max-width: 100%;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .development-note {
+            font-size: 13px;
+            max-width: 100%;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            margin: 0 0 16px 0;
+        }
+        .link {
+            display: inline-block;
+        }
+        .right {
+            width: 220px;
+            height: 220px;
+            margin: 30px auto 0;
+        }
+        .affirm-section {
+            padding: 60px 22px 0;
+        }
+        .affirm-section h2 {
+            font-size: 28px;
+        }
+        .affirm-section h3 {
+            font-size: 19px;
+        }
+        .affirm-section ul li {
+            font-size: 16px;
+        }
+        .connect-section {
+            padding: 50px 22px 80px;
+        }
+        .connect-section h2 {
+            font-size: 24px;
+        }
     }
 </style>
 </head>
