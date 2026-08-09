@@ -119,6 +119,14 @@
         50% { opacity: 0.35; }
     }
 
+    .audience {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        color: var(--teal);
+        margin-bottom: 20px;
+    }
+
     h1 {
         font-family: var(--serif);
         font-weight: 500;
@@ -440,6 +448,32 @@
         letter-spacing: 0.5px;
     }
 
+    .disclaimer-section {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 40px 80px;
+    }
+    .disclaimer-box {
+        border: 1px solid var(--panel-line);
+        border-left: 2px solid var(--brass-dim);
+        border-radius: 4px;
+        padding: 26px 28px;
+        background: rgba(193, 137, 63, 0.03);
+    }
+    .disclaimer-box .eyebrow {
+        color: var(--brass);
+        margin-bottom: 12px;
+    }
+    .disclaimer-box p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #8b8577;
+        margin-bottom: 12px;
+    }
+    .disclaimer-box p:last-child {
+        margin-bottom: 0;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .status .dot,
         .pulse-line.calm,
@@ -511,6 +545,12 @@
         .connect-section h2 {
             font-size: 24px;
         }
+        .disclaimer-section {
+            padding: 0 22px 60px;
+        }
+        .disclaimer-box {
+            padding: 20px 20px;
+        }
     }
 </style>
 </head>
@@ -521,14 +561,17 @@
     <div class="left">
         <div class="logo"><img src="images/logotrans.png" alt="">CalyVyre</div>
         <div class="status"><span class="dot"></span> Early development build</div>
+        <div class="audience">For traders, investors &amp; financial decision-makers</div>
         <h1>
             Rewire your mind.<br>
             Build <em>calm</em> discipline.
         </h1>
         <p>
-            CalyVyre helps you train focus, improve mindset,
-            and build consistency through mental awareness
-            and disciplined thinking.
+            CalyVyre is a mental training tool for traders, investors, and
+            business professionals working in financial markets. It helps you
+            build focus, improve mindset, and stay consistent through mental
+            awareness and disciplined thinking — especially when money and
+            timing are on the line.
         </p>
         <div class="development-note">
             CalyVyre is currently under active development. This public build
@@ -575,9 +618,10 @@
     <h2>A mental gym for high-pressure decisions</h2>
     <p>
         CalyVyre Affirm is designed to strengthen your psychology through daily affirmations
-        and interactive quizzes. By reading and reflecting consistently, you build patience,
-        focus, discipline, and emotional control — qualities that are essential for trading
-        and high-pressure decision-making.
+        and interactive quizzes. It's built for people who make decisions under financial
+        pressure — day traders, swing traders, investors, and business owners — where reading
+        and reflecting consistently builds the patience, focus, discipline, and emotional
+        control that trading and high-stakes decision-making demand.
     </p>
     <p>
         Every session helps train your mind to stay calm, think clearly, and respond
@@ -628,6 +672,25 @@
         <a class="connect-item support" href="support.html">
             <span class="icon">💛</span> Support
         </a>
+    </div>
+</section>
+
+<section class="disclaimer-section">
+    <div class="disclaimer-box">
+        <div class="eyebrow">Disclaimer</div>
+        <p>
+            CalyVyre is a mental training and self-reflection tool. It does not provide
+            financial advice, trading recommendations, signals, or guaranteed outcomes of
+            any kind. Nothing on this site or within the app should be treated as investment,
+            legal, or financial advice.
+        </p>
+        <p>
+            Trading and investing carry a real risk of financial loss. Any decisions you make
+            in financial markets are your own responsibility — always use your own judgment,
+            do your own research, and consult a licensed financial professional before acting
+            on any trade or investment decision. CalyVyre and its creators accept no liability
+            for losses or outcomes resulting from the use of this software.
+        </p>
     </div>
 </section>
 
