@@ -5,176 +5,366 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CalyVyre</title>
 <link rel="icon" type="image/png" href="images/logotrans.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+    :root {
+        --ink: #0a0d0f;
+        --panel: #101516;
+        --panel-line: rgba(237, 234, 227, 0.08);
+        --paper: #ece7dd;
+        --paper-dim: #a8a296;
+        --brass: #c1893f;
+        --brass-dim: #8a662f;
+        --teal: #547b78;
+        --teal-dim: #395452;
+        --serif: 'Fraunces', Georgia, serif;
+        --sans: 'Inter', 'Segoe UI', Arial, sans-serif;
+        --mono: 'IBM Plex Mono', 'Consolas', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
         margin: 0;
-        font-family: Segoe UI, Arial;
-        background: linear-gradient(120deg, #0d1117, #111827);
-        color: white;
+        font-family: var(--sans);
+        background: var(--ink);
+        color: var(--paper);
         overflow-x: hidden;
     }
+
+    ::selection {
+        background: var(--brass);
+        color: var(--ink);
+    }
+
+    a:focus-visible, button:focus-visible, .connect-item:focus-visible {
+        outline: 2px solid var(--brass);
+        outline-offset: 3px;
+    }
+
+    /* Faint drifting grain / ambient texture */
+    .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.035;
+        background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+        background-size: 3px 3px;
+    }
+
     .container {
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 100vh;
+        gap: 60px;
+        min-height: 100vh;
+        max-width: 1280px;
+        margin: 0 auto;
         padding: 0 90px;
     }
+
     .left {
         max-width: 600px;
     }
+
     .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--serif);
         font-size: 22px;
-        font-weight: bold;
-        color: #a78bfa;
-        margin-bottom: 18px;
-        letter-spacing: 1px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: var(--paper);
+        margin-bottom: 34px;
     }
+    .logo::before {
+        content: '';
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: conic-gradient(from 180deg, var(--brass), var(--teal), var(--brass));
+        flex-shrink: 0;
+    }
+
     .status {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         padding: 7px 14px;
-        margin-bottom: 24px;
-        border-radius: 20px;
-        background: rgba(124, 58, 237, 0.12);
-        border: 1px solid rgba(167, 139, 250, 0.35);
-        color: #c4b5fd;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.4px;
+        margin-bottom: 30px;
+        border-radius: 3px;
+        background: rgba(193, 137, 63, 0.08);
+        border: 1px solid var(--brass-dim);
+        color: var(--brass);
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
     }
+    .status .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--brass);
+        box-shadow: 0 0 8px var(--brass);
+        animation: blink 2.4s ease-in-out infinite;
+    }
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+    }
+
     h1 {
-        font-size: 58px;
-        line-height: 1.1;
-        margin: 0 0 22px;
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 60px;
+        line-height: 1.08;
+        letter-spacing: -0.5px;
+        margin: 0 0 26px;
     }
+    h1 em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--brass);
+    }
+
     p {
-        font-size: 19px;
-        color: #c9d1d9;
+        font-size: 18px;
+        color: var(--paper-dim);
         line-height: 1.7;
         margin-bottom: 18px;
     }
+
     .development-note {
-        font-size: 15px;
-        color: #8b949e;
+        display: flex;
+        gap: 10px;
+        font-family: var(--mono);
+        font-size: 13px;
+        color: #776f60;
         line-height: 1.6;
-        margin-bottom: 32px;
-        max-width: 540px;
+        margin-bottom: 38px;
+        max-width: 520px;
+        padding-left: 14px;
+        border-left: 2px solid var(--panel-line);
     }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+    }
+
     .btn {
         display: inline-block;
-        padding: 15px 30px;
-        background: linear-gradient(90deg, #7c3aed, #9333ea);
-        color: white;
+        padding: 15px 28px;
+        background: var(--brass);
+        color: var(--ink);
         text-decoration: none;
-        border-radius: 12px;
-        font-weight: bold;
-        margin-right: 18px;
-        transition: 0.2s;
-        box-shadow: 0 0 25px rgba(124, 58, 237, 0.25);
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        box-shadow: 0 0 0 rgba(193, 137, 63, 0);
     }
     .btn:hover {
-        transform: scale(1.05);
+        background: #d19a52;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(193, 137, 63, 0.25);
     }
+
     .link {
-        color: #a78bfa;
+        color: var(--paper-dim);
         text-decoration: none;
-        font-size: 17px;
+        font-size: 15px;
+        border-bottom: 1px solid transparent;
+        transition: 0.2s;
+        padding-bottom: 2px;
     }
     .link:hover {
-        text-decoration: underline;
+        color: var(--paper);
+        border-bottom-color: var(--teal);
     }
+
     .right {
-        width: 420px;
-        height: 420px;
+        width: 440px;
+        height: 440px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        position: relative;
     }
     .right img {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 62%;
+        max-height: 62%;
         object-fit: contain;
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(0 0 40px rgba(193, 137, 63, 0.12));
     }
+
+    /* Signature element: the pulse steadying from noise into rhythm */
+    .pulse-ring {
+        position: absolute;
+        inset: 0;
+    }
+    .pulse-ring svg {
+        width: 100%;
+        height: 100%;
+    }
+    .pulse-line {
+        fill: none;
+        stroke: var(--brass);
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        opacity: 0.85;
+    }
+    .pulse-line.calm {
+        stroke: var(--teal);
+        opacity: 0;
+        animation: settle 9s ease-in-out infinite;
+    }
+    .pulse-line.chaos {
+        animation: unsettle 9s ease-in-out infinite;
+    }
+    @keyframes unsettle {
+        0%, 40% { opacity: 0.85; }
+        58%, 100% { opacity: 0; }
+    }
+    @keyframes settle {
+        0%, 40% { opacity: 0; }
+        58%, 100% { opacity: 0.9; }
+    }
+    .orbit-dot {
+        fill: var(--paper);
+    }
+
+    section {
+        position: relative;
+        z-index: 1;
+    }
+
     .affirm-section {
-        max-width: 780px;
+        max-width: 760px;
         margin: 0 auto;
-        padding: 100px 40px 0;
-        text-align: center;
+        padding: 130px 40px 0;
+    }
+    .eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
     }
     .affirm-section h2 {
-        font-size: 36px;
-        margin-bottom: 20px;
-        background: linear-gradient(90deg, #a78bfa, #c4b5fd);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 40px;
+        letter-spacing: -0.3px;
+        margin: 0 0 30px;
+        color: var(--paper);
     }
     .affirm-section p {
         text-align: left;
     }
     .affirm-section h3 {
+        font-family: var(--serif);
+        font-weight: 500;
         font-size: 22px;
-        color: #e5e7eb;
-        margin: 34px 0 18px;
+        color: var(--paper);
+        margin: 46px 0 22px;
         text-align: left;
     }
-    .affirm-section ul {
-        text-align: left;
-        padding-left: 20px;
-        margin-bottom: 18px;
+    .gain-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px;
+        display: grid;
+        gap: 2px;
     }
-    .affirm-section ul li {
-        font-size: 18px;
-        color: #c9d1d9;
-        line-height: 1.9;
+    .gain-list li {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        font-size: 17px;
+        color: var(--paper-dim);
+        line-height: 1.7;
+        padding: 16px 4px;
+        border-top: 1px solid var(--panel-line);
     }
+    .gain-list li:last-child {
+        border-bottom: 1px solid var(--panel-line);
+    }
+    .gain-list li::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        margin-top: 8px;
+        border-radius: 50%;
+        background: var(--brass);
+        flex-shrink: 0;
+    }
+
     .connect-section {
-        max-width: 780px;
+        max-width: 760px;
         margin: 0 auto;
-        padding: 80px 40px 120px;
+        padding: 90px 40px 130px;
         text-align: center;
     }
     .connect-section h2 {
-        font-size: 30px;
-        margin-bottom: 34px;
-        color: #e5e7eb;
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 28px;
+        margin-bottom: 40px;
+        color: var(--paper);
     }
     .connect-grid {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 14px;
+        gap: 12px;
     }
     .connect-item {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 12px 20px;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.08);
-        color: #c9d1d9;
+        padding: 13px 22px;
+        border-radius: 4px;
+        background: var(--panel);
+        border: 1px solid var(--panel-line);
+        color: var(--paper-dim);
         text-decoration: none;
-        font-size: 15px;
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.3px;
         transition: 0.2s;
         cursor: pointer;
     }
     .connect-item:hover {
-        border-color: rgba(167, 139, 250, 0.5);
-        color: #e5e7eb;
+        border-color: var(--teal);
+        color: var(--paper);
         transform: translateY(-2px);
     }
     .connect-item .icon {
-        font-size: 17px;
+        font-size: 15px;
+        filter: grayscale(0.4);
     }
     .connect-item.support {
-        border-color: rgba(250, 204, 21, 0.3);
-        color: #fde68a;
+        border-color: var(--brass-dim);
+        color: #e6c48c;
     }
     .connect-item.support:hover {
-        border-color: rgba(250, 204, 21, 0.6);
-        color: #fef3c7;
+        border-color: var(--brass);
+        color: #f3dcb3;
     }
 
     /* Contact dropdown */
@@ -188,12 +378,12 @@
         bottom: calc(100% + 10px);
         left: 50%;
         transform: translateX(-50%);
-        background: #161b22;
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 12px;
+        background: var(--panel);
+        border: 1px solid var(--panel-line);
+        border-radius: 6px;
         padding: 8px;
-        min-width: 200px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        min-width: 210px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         z-index: 10;
     }
     .contact-menu.open {
@@ -207,29 +397,31 @@
         text-align: left;
         background: none;
         border: none;
-        color: #c9d1d9;
+        color: var(--paper-dim);
         text-decoration: none;
-        font-size: 14px;
-        font-family: inherit;
+        font-family: var(--mono);
+        font-size: 13px;
         padding: 10px 12px;
-        border-radius: 8px;
+        border-radius: 4px;
         cursor: pointer;
     }
     .contact-menu a:hover,
     .contact-menu button:hover {
-        background: rgba(167, 139, 250, 0.12);
-        color: #e5e7eb;
+        background: rgba(193, 137, 63, 0.1);
+        color: var(--paper);
     }
     .copy-toast {
         position: absolute;
         bottom: calc(100% + 10px);
         left: 50%;
         transform: translateX(-50%);
-        background: #7c3aed;
-        color: white;
+        background: var(--brass);
+        color: var(--ink);
+        font-family: var(--mono);
         font-size: 12px;
+        font-weight: 600;
         padding: 6px 12px;
-        border-radius: 8px;
+        border-radius: 4px;
         white-space: nowrap;
         opacity: 0;
         pointer-events: none;
@@ -239,56 +431,84 @@
         opacity: 1;
     }
 
+    footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 0 40px 50px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: #4d473d;
+        letter-spacing: 0.5px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .status .dot,
+        .pulse-line.calm,
+        .pulse-line.chaos {
+            animation: none !important;
+        }
+        .pulse-line.calm { opacity: 0.9; }
+        .pulse-line.chaos { opacity: 0; }
+    }
+
     /* ===== Mobile ===== */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         .container {
-            flex-direction: column;
+            flex-direction: column-reverse;
             justify-content: center;
             height: auto;
             min-height: 100vh;
-            padding: 60px 24px 50px;
+            padding: 50px 24px 60px;
             text-align: left;
+            gap: 30px;
         }
         .left {
             max-width: 100%;
         }
         h1 {
-            font-size: 36px;
+            font-size: 38px;
         }
         p {
             font-size: 16px;
         }
         .development-note {
-            font-size: 13px;
+            font-size: 12px;
             max-width: 100%;
         }
         .btn {
             display: block;
+            width: 100%;
             text-align: center;
-            margin: 0 0 16px 0;
+        }
+        .actions {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
         }
         .link {
-            display: inline-block;
+            text-align: center;
         }
         .right {
-            width: 220px;
-            height: 220px;
-            margin: 30px auto 0;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto 0;
         }
         .affirm-section {
-            padding: 60px 22px 0;
+            padding: 70px 22px 0;
         }
         .affirm-section h2 {
-            font-size: 28px;
+            font-size: 30px;
         }
         .affirm-section h3 {
             font-size: 19px;
         }
-        .affirm-section ul li {
-            font-size: 16px;
+        .gain-list li {
+            font-size: 15px;
         }
         .connect-section {
-            padding: 50px 22px 80px;
+            padding: 60px 22px 90px;
         }
         .connect-section h2 {
             font-size: 24px;
@@ -297,13 +517,15 @@
 </style>
 </head>
 <body>
+<div class="noise"></div>
+
 <div class="container">
     <div class="left">
         <div class="logo">CalyVyre</div>
-        <div class="status">EARLY DEVELOPMENT BUILD</div>
+        <div class="status"><span class="dot"></span> Early development build</div>
         <h1>
             Rewire your mind.<br>
-            Build calm discipline.
+            Build <em>calm</em> discipline.
         </h1>
         <p>
             CalyVyre helps you train focus, improve mindset,
@@ -311,25 +533,48 @@
             and disciplined thinking.
         </p>
         <div class="development-note">
-            CalyVyre is currently under active development.
-            This public build represents an early version of the project
-            and may contain unfinished features or bugs.
+            CalyVyre is currently under active development. This public build
+            represents an early version of the project and may contain
+            unfinished features or bugs.
         </div>
-       <a class="btn" href="https://github.com/CalyVyre/CalyVyre-App/releases/latest/download/Calyvyre.Setup.exe">
-            Download for Windows
-        </a>
-        <a class="link" href="https://github.com/CalyVyre">
-            View on GitHub →
-        </a>
+        <div class="actions">
+            <a class="btn" href="https://github.com/CalyVyre/CalyVyre-App/releases/latest/download/Calyvyre.Setup.exe">
+                Download for Windows
+            </a>
+            <a class="link" href="https://github.com/CalyVyre">
+                View on GitHub →
+            </a>
+        </div>
     </div>
-    <!-- Right Side -->
+
+    <!-- Right Side — signature element: an erratic pulse settling into rhythm -->
     <div class="right">
+        <div class="pulse-ring" aria-hidden="true">
+            <svg viewBox="0 0 440 440">
+                <circle cx="220" cy="220" r="168" fill="none" stroke="var(--panel-line)" stroke-width="1"/>
+                <path class="pulse-line chaos" d="M 52 220
+                    L 90 220 L 104 150 L 118 290 L 132 100 L 146 320 L 160 180
+                    L 174 250 L 188 130 L 202 220 L 220 220
+                    L 238 220 L 252 300 L 266 140 L 280 260 L 294 190
+                    L 308 230 L 322 170 L 336 220 L 388 220" />
+                <path class="pulse-line calm" d="M 52 220
+                    C 100 220 100 180 148 180
+                    C 196 180 196 260 244 260
+                    C 292 260 292 180 340 180
+                    C 364 180 364 220 388 220" />
+                <circle class="orbit-dot" cx="220" cy="52" r="3">
+                    <animateTransform attributeName="transform" type="rotate"
+                        from="0 220 220" to="360 220 220" dur="14s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
         <img src="images/logotrans.png" alt="CalyVyre Logo">
     </div>
 </div>
 
-<div class="affirm-section">
-    <h2>CalyVyre Affirm</h2>
+<section class="affirm-section">
+    <div class="eyebrow">CalyVyre Affirm</div>
+    <h2>A mental gym for high-pressure decisions</h2>
     <p>
         CalyVyre Affirm is designed to strengthen your psychology through daily affirmations
         and interactive quizzes. By reading and reflecting consistently, you build patience,
@@ -337,11 +582,11 @@
         and high-pressure decision-making.
     </p>
     <p>
-        Think of it as a mental gym. Every session helps train your mind to stay calm,
-        think clearly, and respond logically instead of emotionally under pressure.
+        Every session helps train your mind to stay calm, think clearly, and respond
+        logically instead of emotionally under pressure.
     </p>
-    <h3>What You'll Gain</h3>
-    <ul>
+    <h3>What you'll gain</h3>
+    <ul class="gain-list">
         <li>Stronger emotional control during critical decisions</li>
         <li>Improved focus and mental clarity in trading and daily life</li>
         <li>Better patience and discipline over time</li>
@@ -351,9 +596,9 @@
         Ultimately, the goal is to move away from emotional reactions and operate from
         a more logical and disciplined state of mind.
     </p>
-</div>
+</section>
 
-<div class="connect-section">
+<section class="connect-section">
     <h2>Connect</h2>
     <div class="connect-grid">
         <a class="connect-item" href="https://github.com/CalyVyre" target="_blank">
@@ -370,7 +615,7 @@
         </a>
 
         <div class="contact-wrap">
-            <div class="connect-item" onclick="toggleContactMenu(event)">
+            <div class="connect-item" onclick="toggleContactMenu(event)" tabindex="0" role="button" aria-haspopup="true">
                 <span class="icon">✉️</span> Contact
             </div>
             <div class="contact-menu" id="contactMenu">
@@ -386,7 +631,9 @@
             <span class="icon">💛</span> Support
         </a>
     </div>
-</div>
+</section>
+
+<footer>CalyVyre — built in the open</footer>
 
 <script>
     function toggleContactMenu(e) {
