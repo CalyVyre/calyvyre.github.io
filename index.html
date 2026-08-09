@@ -83,12 +83,10 @@
         color: var(--paper);
         margin-bottom: 34px;
     }
-    .logo::before {
-        content: '';
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: conic-gradient(from 180deg, var(--brass), var(--teal), var(--brass));
+    .logo img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
         flex-shrink: 0;
     }
 
@@ -521,7 +519,7 @@
 
 <div class="container">
     <div class="left">
-        <div class="logo">CalyVyre</div>
+        <div class="logo"><img src="images/logotrans.png" alt="">CalyVyre</div>
         <div class="status"><span class="dot"></span> Early development build</div>
         <h1>
             Rewire your mind.<br>
