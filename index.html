@@ -457,18 +457,25 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         padding: 0 40px 60px;
-    }
-    .site-counter img {
-        display: block;
-        min-height: 20px;
-    }
-    .site-counter .fallback {
-        display: none;
         font-family: var(--mono);
-        font-size: 11px;
-        color: #776f60;
+    }
+    .counter-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #4d473d;
+    }
+    .counter-value {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--brass);
+        letter-spacing: 0.5px;
+    }
+    .counter-note {
+        font-size: 10px;
+        color: #4d473d;
     }
 
     .disclaimer-section {
@@ -719,12 +726,9 @@
 
 <footer>CalyVyre — built in the open</footer>
 <div class="site-counter">
-    <a href="https://hits.sh/github.com/CalyVyre/CalyVyre-App/" target="_blank" rel="noopener">
-        <img src="https://hits.sh/github.com/CalyVyre/CalyVyre-App.svg?style=flat-square&label=site%20views&color=c1893f&labelColor=1a2233"
-             alt="Site view count"
-             onerror="this.style.display='none'; document.getElementById('counterFallback').style.display='block';">
-    </a>
-    <div class="fallback" id="counterFallback">View counter couldn't load — check your internet connection or open this page from a real URL rather than a local file.</div>
+    <span class="counter-label">Site views</span>
+    <span class="counter-value" id="counterValue">…</span>
+    <span class="counter-note" id="counterNote"></span>
 </div>
 
 <script>
@@ -744,6 +748,31 @@
             document.getElementById('contactMenu').classList.remove('open');
         });
     }
+
+    // Site view counter — tries a real shared count first;
+    // if the request is blocked (ad-blockers commonly flag hit-counter
+    // services as trackers), falls back to a local-only count so the
+    // page never shows a broken/error state to visitors.
+    (function () {
+        var valueEl = document.getElementById('counterValue');
+        var noteEl = document.getElementById('counterNote');
+
+        fetch('https://countapi.mileshilliard.com/api/v1/hit/calyvyre-app-site-visits')
+            .then(function (res) {
+                if (!res.ok) throw new Error('bad response');
+                return res.json();
+            })
+            .then(function (data) {
+                valueEl.textContent = data.value.toLocaleString();
+            })
+            .catch(function () {
+                var key = 'calyvyre_local_visits';
+                var count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+                localStorage.setItem(key, count);
+                valueEl.textContent = count.toLocaleString();
+                noteEl.textContent = '(local to this browser — shared counter unavailable)';
+            });
+    })();
 </script>
 </body>
 </html>
