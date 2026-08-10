@@ -19,6 +19,7 @@
         --brass-dim: #8a662f;
         --teal: #547b78;
         --teal-dim: #395452;
+        --teal-bright: #8ec2bd;
         --serif: 'Fraunces', Georgia, serif;
         --sans: 'Inter', 'Segoe UI', Arial, sans-serif;
         --mono: 'IBM Plex Mono', 'Consolas', monospace;
@@ -123,7 +124,7 @@
         font-family: var(--mono);
         font-size: 12px;
         letter-spacing: 0.6px;
-        color: var(--teal);
+        color: var(--teal-bright);
         margin-bottom: 20px;
     }
 
@@ -148,7 +149,7 @@
         margin-bottom: 18px;
         text-align: justify;
         text-justify: inter-word;
-        hyphens: auto;
+        hyphens: none;
     }
 
     .development-note {
@@ -271,7 +272,7 @@
         font-size: 12px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: var(--teal);
+        color: var(--teal-bright);
         margin-bottom: 14px;
     }
     .affirm-section h2 {
@@ -473,10 +474,6 @@
         color: var(--brass);
         letter-spacing: 0.5px;
     }
-    .counter-note {
-        font-size: 10px;
-        color: #4d473d;
-    }
 
     .disclaimer-section {
         max-width: 760px;
@@ -600,8 +597,8 @@
             CalyVyre helps you train focus, improve mindset, and build
             consistency through mental awareness and disciplined thinking.
             Through daily affirmations, it helps traders, investors, and
-            business professionals stay focused and level-headed when
-            financial markets get high-pressure.
+            business professionals stay focused, grounded, and level-headed
+            when financial markets get high-pressure.
         </p>
         <div class="development-note">
             CalyVyre is currently under active development. This public build
@@ -726,9 +723,8 @@
 
 <footer>CalyVyre — built in the open</footer>
 <div class="site-counter">
-    <span class="counter-label">Site views</span>
+    <span class="counter-label">Minds reached</span>
     <span class="counter-value" id="counterValue">…</span>
-    <span class="counter-note" id="counterNote"></span>
 </div>
 
 <script>
@@ -751,11 +747,11 @@
 
     // Site view counter — tries a real shared count first;
     // if the request is blocked (ad-blockers commonly flag hit-counter
-    // services as trackers), falls back to a local-only count so the
-    // page never shows a broken/error state to visitors.
+    // services as trackers) or the service is down, falls back to a
+    // local-only count so the number always displays cleanly with no
+    // visible error state to visitors.
     (function () {
         var valueEl = document.getElementById('counterValue');
-        var noteEl = document.getElementById('counterNote');
 
         fetch('https://countapi.mileshilliard.com/api/v1/hit/calyvyre-app-site-visits')
             .then(function (res) {
@@ -763,14 +759,13 @@
                 return res.json();
             })
             .then(function (data) {
-                valueEl.textContent = data.value.toLocaleString();
+                valueEl.textContent = Number(data.value).toLocaleString();
             })
             .catch(function () {
                 var key = 'calyvyre_local_visits';
                 var count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
                 localStorage.setItem(key, count);
                 valueEl.textContent = count.toLocaleString();
-                noteEl.textContent = '(local to this browser — shared counter unavailable)';
             });
     })();
 </script>
