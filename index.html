@@ -452,6 +452,16 @@
         letter-spacing: 0.5px;
     }
 
+    footer a {
+        color: #4d473d;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+        color: var(--brass);
+    }
+
     .site-counter {
         position: relative;
         z-index: 1;
@@ -721,7 +731,11 @@
     </div>
 </section>
 
-<footer>CalyVyre — built in the open</footer>
+<footer>
+    CalyVyre — built in the open
+    <span> · </span>
+    <a href="privacy.html">Privacy Policy</a>
+</footer>
 <div class="site-counter">
     <span class="counter-label">Minds reached</span>
     <span class="counter-value" id="counterValue">…</span>
