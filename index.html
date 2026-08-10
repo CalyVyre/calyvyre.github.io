@@ -455,12 +455,20 @@
         position: relative;
         z-index: 1;
         display: flex;
-        justify-content: center;
-        padding: 0 40px 50px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 0 40px 60px;
     }
     .site-counter img {
-        opacity: 0.75;
-        filter: grayscale(0.3);
+        display: block;
+        min-height: 20px;
+    }
+    .site-counter .fallback {
+        display: none;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: #776f60;
     }
 
     .disclaimer-section {
@@ -711,9 +719,12 @@
 
 <footer>CalyVyre — built in the open</footer>
 <div class="site-counter">
-    <a href="https://hits.sh/calyvyre.app/" target="_blank" rel="noopener">
-        <img src="https://hits.sh/calyvyre.app.svg?style=flat-square&label=site%20views&color=8a662f&labelColor=131c2b" alt="Site view count">
+    <a href="https://hits.sh/github.com/CalyVyre/CalyVyre-App/" target="_blank" rel="noopener">
+        <img src="https://hits.sh/github.com/CalyVyre/CalyVyre-App.svg?style=flat-square&label=site%20views&color=c1893f&labelColor=1a2233"
+             alt="Site view count"
+             onerror="this.style.display='none'; document.getElementById('counterFallback').style.display='block';">
     </a>
+    <div class="fallback" id="counterFallback">View counter couldn't load — check your internet connection or open this page from a real URL rather than a local file.</div>
 </div>
 
 <script>
