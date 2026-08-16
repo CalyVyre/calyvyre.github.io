@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why CalyVyre Affirm? — CalyVyre</title>
+<link rel="icon" type="image/png" href="images/logotrans.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --ink: #0d1117;
+        --panel: #131c2b;
+        --panel-line: rgba(237, 234, 227, 0.09);
+        --paper: #ece7dd;
+        --paper-dim: #a8a296;
+        --brass: #c1893f;
+        --brass-dim: #8a662f;
+        --teal: #547b78;
+        --teal-dim: #395452;
+        --teal-bright: #8ec2bd;
+        --serif: 'Fraunces', Georgia, serif;
+        --sans: 'Inter', 'Segoe UI', Arial, sans-serif;
+        --mono: 'IBM Plex Mono', 'Consolas', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: var(--sans);
+        background: linear-gradient(150deg, #0d1117 0%, #111a2b 45%, #17233a 100%);
+        color: var(--paper);
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        background: var(--brass);
+        color: var(--ink);
+    }
+
+    a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--brass);
+        outline-offset: 3px;
+    }
+
+    .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.035;
+        background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+        background-size: 3px 3px;
+    }
+
+    header {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 50px 40px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--serif);
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: var(--paper);
+        text-decoration: none;
+    }
+    .logo img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .back-link {
+        color: var(--paper-dim);
+        text-decoration: none;
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.3px;
+        border-bottom: 1px solid transparent;
+        transition: 0.2s;
+        padding-bottom: 2px;
+    }
+    .back-link:hover {
+        color: var(--paper);
+        border-bottom-color: var(--teal);
+    }
+
+    main {
+        position: relative;
+        z-index: 1;
+    }
+
+    .why-section {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 60px 40px 0;
+    }
+
+    .eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--teal-bright);
+        margin-bottom: 14px;
+    }
+
+    h1 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 44px;
+        line-height: 1.15;
+        letter-spacing: -0.4px;
+        margin: 0 0 40px;
+        color: var(--paper);
+    }
+
+    p {
+        font-size: 18px;
+        color: var(--paper-dim);
+        line-height: 1.75;
+        margin-bottom: 22px;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: none;
+    }
+
+    p.lead-question {
+        color: var(--paper);
+        font-size: 19px;
+    }
+
+    p.emphasis {
+        font-family: var(--serif);
+        font-style: italic;
+        color: var(--paper);
+        font-size: 20px;
+        text-align: left;
+        margin: 34px 0;
+    }
+
+    .divider {
+        border: none;
+        border-top: 1px solid var(--panel-line);
+        margin: 50px 0;
+    }
+
+    .support-section {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 40px 130px;
+    }
+
+    .support-box {
+        border: 1px solid var(--panel-line);
+        border-left: 2px solid var(--brass);
+        border-radius: 4px;
+        padding: 40px 36px;
+        background: rgba(193, 137, 63, 0.04);
+        text-align: center;
+    }
+
+    .support-box h2 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 26px;
+        color: var(--paper);
+        margin: 0 0 22px;
+    }
+
+    .support-box p {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 18px;
+    }
+
+    .support-box p:last-of-type {
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 15px 32px;
+        background: var(--brass);
+        color: var(--ink);
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover {
+        background: #d19a52;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(193, 137, 63, 0.25);
+    }
+
+    footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 0 40px 60px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: #4d473d;
+        letter-spacing: 0.5px;
+    }
+    footer a {
+        color: #4d473d;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    footer a:hover {
+        color: var(--brass);
+    }
+
+    @media (max-width: 900px) {
+        header {
+            padding: 30px 22px 0;
+        }
+        .why-section {
+            padding: 40px 22px 0;
+        }
+        h1 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 16px;
+        }
+        p.lead-question {
+            font-size: 16px;
+        }
+        p.emphasis {
+            font-size: 18px;
+        }
+        .support-section {
+            padding: 0 22px 90px;
+        }
+        .support-box {
+            padding: 30px 22px;
+        }
+        .divider {
+            margin: 40px 0;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header>
+    <a class="logo" href="index.html"><img src="images/logotrans.png" alt="">CalyVyre</a>
+    <a class="back-link" href="index.html">← Back home</a>
+</header>
+
+<main>
+    <section class="why-section">
+        <div class="eyebrow">CalyVyre Affirm</div>
+        <h1>Why CalyVyre Affirm?</h1>
+
+        <p class="lead-question">Have you ever told yourself you wouldn't take a loss, yet somehow ended up holding the losing trade?</p>
+        <p class="lead-question">How many times have you wanted to close a trade that was floating in loss, but couldn't bring yourself to do it?</p>
+        <p class="lead-question">How many times have you promised yourself, "I won't make this mistake again," only to find yourself repeating it later?</p>
+        <p class="lead-question">How many times have you taken another entry right after a profit, even though you knew you should stop?</p>
+
+        <p>There can be countless examples.</p>
+
+        <p>
+            We don't make these mistakes because we consciously want to make them. We make them because
+            our brain is wired to protect us when it perceives danger. Under pressure, fear and greed can
+            activate this survival response. A losing trade can feel like a threat that must be escaped,
+            while the fear of losing a profit can create an urge to close too early, and the desire to
+            make more can push us into taking another trade.
+        </p>
+
+        <p>
+            Even though there may be no physical danger, the mind can interpret financial loss or the
+            possibility of losing money as a real threat that requires an immediate response. When this
+            happens repeatedly, these reactions become deeply reinforced patterns. Under pressure, the
+            brain can automatically fall back on them before logical thinking has a chance to take control.
+        </p>
+
+        <p class="emphasis">Knowing what to do is not always enough. Your brain also needs to be trained to respond differently.</p>
+
+        <p>
+            This is where neuroplasticity becomes important. Your brain is capable of strengthening
+            existing neural pathways and developing new ones through repeated thoughts, actions, and
+            experiences.
+        </p>
+
+        <p>CalyVyre Affirm is built around this principle.</p>
+
+        <p>
+            Through affirmations, reflection, habit tracking, and consistent practice, CalyVyre helps you
+            repeatedly reinforce the patterns you want to develop — patience instead of impulsiveness,
+            discipline instead of reaction, and clarity instead of emotion.
+        </p>
+
+        <p class="emphasis">
+            The goal is not simply to remind yourself to behave better.<br>
+            The goal is to train the mind behind the behavior.
+        </p>
+
+        <p>
+            Because lasting change doesn't come from knowing what you should do once.
+            It comes from repeatedly practicing the right response until it becomes stronger,
+            more familiar, and more natural.
+        </p>
+
+        <p>CalyVyre Affirm helps you build those new patterns — one thought, one habit, and one decision at a time.</p>
+
+        <hr class="divider">
+    </section>
+
+    <section class="support-section">
+        <div class="support-box">
+            <h2>Help Us Build It</h2>
+            <p>
+                CalyVyre is still under active development, and we're working hard to make it better with
+                every release. If you believe in the idea and want to see it grow faster, your support can
+                help us keep building, improving, and adding new features.
+            </p>
+            <p>
+                Whether you use CalyVyre, share it with someone who may benefit from it, give feedback,
+                or simply support the project — every bit of support helps us move forward.
+            </p>
+            <a class="btn" href="support.html">Support CalyVyre →</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    CalyVyre — built in the open
+    <span> · </span>
+    <a href="index.html">Home</a>
+    <span> · </span>
+    <a href="privacy.html">Privacy Policy</a>
+</footer>
+
+</body>
+</html>
