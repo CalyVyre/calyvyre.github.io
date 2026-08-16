@@ -427,8 +427,15 @@
         transform: translateY(-2px);
     }
     .connect-item .icon {
-        font-size: 15px;
-        filter: grayscale(0.4);
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        flex-shrink: 0;
+        opacity: 0.85;
+        transition: opacity 0.2s;
+    }
+    .connect-item:hover .icon {
+        opacity: 1;
     }
     .connect-item.support {
         border-color: var(--brass-dim);
@@ -757,21 +764,21 @@
     <h2>Connect</h2>
     <div class="connect-grid">
         <a class="connect-item" href="https://github.com/CalyVyre" target="_blank">
-            <span class="icon">💻</span> GitHub
+            <img class="icon" src="images/git.png" alt="GitHub"> GitHub
         </a>
         <a class="connect-item" href="https://www.youtube.com/@CalyVyre" target="_blank">
-            <span class="icon">▶️</span> YouTube
+            <img class="icon" src="images/yt.png" alt="YouTube"> YouTube
         </a>
         <a class="connect-item" href="https://x.com/CalyVyre" target="_blank">
-            <span class="icon">✖️</span> X
+            <img class="icon" src="images/x.png" alt="X"> X
         </a>
         <a class="connect-item" href="https://t.me/CalyVyre" target="_blank">
-            <span class="icon">✈️</span> Telegram
+            <img class="icon" src="images/tg.png" alt="Telegram"> Telegram
         </a>
 
         <div class="contact-wrap">
             <div class="connect-item" onclick="toggleContactMenu(event)" tabindex="0" role="button" aria-haspopup="true">
-                <span class="icon">✉️</span> Contact
+                <img class="icon" src="images/contact.png" alt="Contact"> Contact
             </div>
             <div class="contact-menu" id="contactMenu">
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=calyvyre@gmail.com&su=CalyVyre%20Inquiry" target="_blank">📧 Open in Gmail</a>
