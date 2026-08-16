@@ -427,8 +427,8 @@
         transform: translateY(-2px);
     }
     .connect-item .icon {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         object-fit: contain;
         flex-shrink: 0;
         opacity: 0.85;
@@ -444,6 +444,11 @@
     .connect-item.support:hover {
         border-color: var(--brass);
         color: #f3dcb3;
+    }
+    .support-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
     }
 
     /* Contact dropdown */
@@ -789,6 +794,8 @@
             <div class="copy-toast" id="copyToast">Copied!</div>
         </div>
 
+    </div>
+    <div class="support-row">
         <a class="connect-item support" href="support.html">
             <span class="icon">💛</span> Support
         </a>
