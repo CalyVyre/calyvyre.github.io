@@ -346,6 +346,46 @@
         flex-shrink: 0;
     }
 
+    .why-teaser {
+        display: block;
+        margin-top: 42px;
+        padding: 24px 26px;
+        border-radius: 4px;
+        border: 1px solid var(--panel-line);
+        border-left: 2px solid var(--teal);
+        background: rgba(84, 123, 120, 0.05);
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+    .why-teaser:hover {
+        border-color: var(--teal);
+        background: rgba(84, 123, 120, 0.09);
+        transform: translateY(-2px);
+    }
+    .why-teaser .why-title {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 19px;
+        color: var(--paper);
+        margin-bottom: 8px;
+    }
+    .why-teaser .why-title .arrow {
+        color: var(--brass);
+        margin-left: 4px;
+        transition: transform 0.2s ease;
+        display: inline-block;
+    }
+    .why-teaser:hover .why-title .arrow {
+        transform: translateX(4px);
+    }
+    .why-teaser p {
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--paper-dim);
+        text-align: left;
+        margin: 0;
+    }
+
     .connect-section {
         max-width: 760px;
         margin: 0 auto;
@@ -602,6 +642,9 @@
         .gain-list li {
             font-size: 15px;
         }
+        .why-teaser {
+            padding: 20px 20px;
+        }
         .connect-section {
             padding: 60px 22px 90px;
         }
@@ -704,6 +747,10 @@
         Ultimately, the goal is to move away from emotional reactions and operate from
         a more logical and disciplined state of mind.
     </p>
+    <a class="why-teaser" href="why.html">
+        <div class="why-title">Why CalyVyre?<span class="arrow">→</span></div>
+        <p>We keep making the same mistakes under pressure — not by accident, but by wiring. Discover how the brain can be trained to respond differently. Let's find out.</p>
+    </a>
 </section>
 
 <section class="connect-section">
